@@ -142,16 +142,38 @@ Incluye todo el plan gratuito más:
 ```plaintext
 gasto-claro/
 │
+gasto-claro/
+│
 ├── index.html
-├── README.md
+├── about.html
+├── producto.html
+├── contacto.html
 │
 ├── css/
-│   └── styles.css
+│   ├── base.css
+│   ├── index.css
+│   ├── about.css
+│   ├── producto.css
+│   └── contacto.css
+│   ├── base.css          // reset, variables, tipografía
+│   ├── layout.css        // header, main, footer
+│   └── components.css    // formularios, botones, tarjetas
 │
 ├── js/
-│   ├── app.js          // lógica principal
-│   ├── storage.js      // manejo de localStorage
-│   └── ui.js           // renderizado y DOM
+│   ├── app.js            // punto de entrada
+│   ├── data/
+│   │   └── gastos.js     // modelo de datos
+│   │
+│   ├── services/
+│   │   └── storage.js    // localStorage
+│   │
+│   └── ui/
+│       ├── header.js     // lógica del header
+│       ├── resumen.js    // sección resumen
+│       ├── formulario.js// sección registro de gasto
+│       └── lista.js      // sección listado de gastos
 │
 └── assets/
-    └── icons/
+    ├── icons/
+    └── images/
+
