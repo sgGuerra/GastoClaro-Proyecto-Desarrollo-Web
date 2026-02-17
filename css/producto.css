@@ -1,56 +1,416 @@
-main {
-  padding: 3rem 2rem;
+/* ========================================
+   GastoClaro - Producto Page Styles
+   Finance Business Template Style
+   ======================================== */
+
+/* Pricing Hero Section */
+.pricing-hero {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 50%, #1565c0 100%);
+  color: white;
+  padding: 80px 0 100px;
+  text-align: center;
+  position: relative;
+}
+
+.pricing-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.pricing-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.pricing-hero h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.pricing-hero p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease 0.2s backwards;
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+  align-items: start;
 }
 
-section {
+.pricing-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #1a73e8, #0d47a1);
+}
+
+.pricing-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card.popular {
+  border: 3px solid #34a853;
+  transform: scale(1.05);
+}
+
+.pricing-card.popular::before {
+  background: linear-gradient(90deg, #34a853, #1e8e3e);
+}
+
+.pricing-card.popular:hover {
+  transform: scale(1.05) translateY(-15px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  background: #34a853;
+  color: white;
+  padding: 5px 40px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+}
+
+.pricing-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #e8f0fe 0%, #d2e3fc 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+}
+
+.pricing-card h3 {
+  font-size: 1.5rem;
+  color: #202124;
+  margin-bottom: 10px;
+}
+
+.pricing-card .description {
+  color: #5f6368;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.pricing-price {
+  margin-bottom: 25px;
+}
+
+.pricing-price .amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a73e8;
+}
+
+.pricing-card.popular .pricing-price .amount {
+  color: #34a853;
+}
+
+.pricing-price .currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+.pricing-price .period {
+  font-size: 1rem;
+  color: #5f6368;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  text-align: left;
+}
+
+.pricing-features li {
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+  color: #5f6368;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: #34a853;
+  font-weight: bold;
+}
+
+.pricing-features li.unavailable {
+  color: #9aa0a6;
+}
+
+.pricing-features li.unavailable::before {
+  content: '✗';
+  color: #9aa0a6;
+}
+
+.pricing-card .btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.pricing-card .btn-primary {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+}
+
+.pricing-card .btn-secondary {
+  background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
+}
+
+.pricing-card.popular .btn {
+  background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
+}
+
+/* Comparison Section */
+.comparison-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.comparison-table {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow-x: auto;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 18px 20px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.comparison-table th {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.comparison-table th:first-child {
+  text-align: left;
+}
+
+.comparison-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: #202124;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tr:hover td {
+  background: #f8f9fa;
+}
+
+.check-icon {
+  color: #34a853;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.cross-icon {
+  color: #9aa0a6;
+  font-size: 1.2rem;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faq-item {
   background: white;
   border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 30px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.faq-item h4 {
+  font-size: 1.1rem;
+  color: #202124;
+  margin-bottom: 12px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq-item h4::before {
+  content: 'Q';
+  background: #1a73e8;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.faq-item p {
+  color: #5f6368;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 38px;
+}
+
+/* CTA Section */
+.cta-pricing {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
   text-align: center;
-  border-top: 4px solid #667eea;
+  color: white;
 }
 
-section:nth-child(2) {
-  border-top-color: #f093fb;
-  transform: translateY(-10px);
+.cta-pricing h2 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
 }
 
-section:nth-child(3) {
-  border-top-color: #4facfe;
+.cta-pricing p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
 }
 
-section:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-section h2 {
-  color: #2c3e50;
-  font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 1rem;
+/* Responsive Design */
+@media (max-width: 992px) {
+  .pricing-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  
+  .pricing-card.popular {
+    transform: none;
+    order: -1;
+  }
+  
+  .pricing-card.popular:hover {
+    transform: translateY(-15px);
+  }
+  
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-section p {
-  color: #666;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-section strong {
-  font-size: 1.8rem;
-  color: #667eea;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  display: inline-block;
+@media (max-width: 768px) {
+  .pricing-hero {
+    padding: 50px 0 60px;
+  }
+  
+  .pricing-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .pricing-hero p {
+    font-size: 1rem;
+  }
+  
+  .comparison-table {
+    font-size: 0.9rem;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 10px;
+  }
 }

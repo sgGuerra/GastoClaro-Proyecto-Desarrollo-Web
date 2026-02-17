@@ -2,44 +2,251 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>GastoClaro | Producto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GastoClaro | Planes y Precios</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/producto.css">
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <h1>GastoClaro</h1>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="about.html">Acerca de</a>
-    <a href="producto.html">Producto</a>
-    <a href="contacto.html">Contáctanos</a>
-  </nav>
+  <div class="header-container">
+    <h1><a href="index.html">💰 GastoClaro</a></h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="about.html">Acerca de</a>
+      <a href="producto.html" class="active">Planes</a>
+      <a href="contacto.html">Contáctanos</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <section>
-    <h2>Plan Gratuito</h2>
-    <p>Registro básico de gastos y visualización mensual.</p>
-    <strong>Gratis</strong>
+  <!-- Pricing Hero Section -->
+  <section class="pricing-hero">
+    <div class="pricing-hero-content">
+      <h1>Planes y Precios</h1>
+      <p>Elige el plan que mejor se adapte a tus necesidades</p>
+    </div>
   </section>
 
-  <section>
-    <h2>Plan Plus</h2>
-    <p>Historial mensual, presupuestos y exportación.</p>
-    <strong>$5 USD / mes</strong>
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="pricing-grid">
+      <!-- Free Plan -->
+      <div class="pricing-card">
+        <div class="pricing-icon">🆓</div>
+        <h3>Plan Gratuito</h3>
+        <p class="description">Ideal para comenzar a controlar tus gastos</p>
+        <div class="pricing-price">
+          <span class="amount">$0</span>
+          <span class="period">/ para siempre</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Registro manual de gastos</li>
+          <li>Categorías básicas (comida, transporte, ocio)</li>
+          <li>Total de gastos mensual</li>
+          <li>Gráfica simple por categorías</li>
+          <li>Persistencia en localStorage</li>
+          <li class="unavailable">Cuenta de usuario</li>
+          <li class="unavailable">Historial por meses</li>
+          <li class="unavailable">Presupuestos mensuales</li>
+          <li class="unavailable">Exportación de datos</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Comenzar Gratis</a>
+      </div>
+
+      <!-- Popular Plan -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Más Popular</div>
+        <div class="pricing-icon">⭐</div>
+        <h3>Plan Plus</h3>
+        <p class="description">Para quienes necesitan más funcionalidades</p>
+        <div class="pricing-price">
+          <span class="currency">$</span><span class="amount">5</span>
+          <span class="period">/ mes</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Todo del plan gratuito</li>
+          <li>Cuenta de usuario</li>
+          <li>Historial de gastos por meses</li>
+          <li>Presupuesto mensual</li>
+          <li>Alertas visuales al superar límites</li>
+          <li>Exportación PDF</li>
+          <li>Exportación Excel</li>
+          <li class="unavailable">Análisis de hábitos</li>
+          <li class="unavailable">Modo familia</li>
+        </ul>
+        <a href="#" class="btn btn-secondary">Elegir Plus</a>
+      </div>
+
+      <!-- Pro Plan -->
+      <div class="pricing-card">
+        <div class="pricing-icon">🚀</div>
+        <h3>Plan Pro</h3>
+        <p class="description">Análisis avanzado y máximo control</p>
+        <div class="pricing-price">
+          <span class="currency">$</span><span class="amount">10</span>
+          <span class="period">/ mes</span>
+        </div>
+        <ul class="pricing-features">
+          <li>Todo del plan Plus</li>
+          <li>Análisis de hábitos de gasto</li>
+          <li>Recomendaciones automáticas</li>
+          <li>Comparativas mensuales</li>
+          <li>Modo familia</li>
+          <li>Categorías personalizadas</li>
+          <li>Soporte prioritario</li>
+          <li>Acceso anticipado a nuevas funciones</li>
+          <li>Sin publicidad</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Elegir Pro</a>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Plan Pro</h2>
-    <p>Análisis avanzado y recomendaciones automáticas.</p>
-    <strong>$10 USD / mes</strong>
+  <!-- Comparison Section -->
+  <section class="comparison-section">
+    <div class="section-title">
+      <h2>Compara los Planes</h2>
+      <p>Elige la opción perfecta para ti</p>
+    </div>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Gratuito</th>
+            <th>Plus</th>
+            <th>Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Registro de gastos</td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Categorías básicas</td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Gráficos por categoría</td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Cuenta de usuario</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Historial por meses</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Presupuestos mensuales</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Exportación PDF/Excel</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Análisis de hábitos</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td>Modo familia</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="section-title">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Resolvemos tus dudas sobre los planes</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>¿Puedo cambiar de plan después?</h4>
+        <p>Sí, puedes actualizar o downgradear tu plan en cualquier momento. Los cambios se aplicarán en el siguiente ciclo de facturación.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Qué métodos de pago aceptan?</h4>
+        <p>Aceptamos tarjetas de crédito/débito (Visa, Mastercard, American Express) y PayPal.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Hay período de prueba gratis?</h4>
+        <p>¡Sí! Ofrecemos 7 días de prueba gratis para los planes Plus y Pro. Sin compromiso.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Puedo cancelar en cualquier momento?</h4>
+        <p>Sí, puedes cancelar tu suscripción cuando quieras. Mantendrás acceso hasta el final de tu período pagado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-pricing">
+    <h2>Comienza Tu Journey Financiero</h2>
+    <p>El plan gratuito te da todas las herramientas básicas que necesitas para empezar a controlar tus gastos</p>
+    <a href="#" class="btn" style="background: white; color: #1a73e8;">Comenzar Gratis Ahora</a>
   </section>
 </main>
 
+<!-- Footer -->
 <footer>
-  <p>© 2026 GastoClaro</p>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h4>GastoClaro</h4>
+        <p>La aplicación más simple para controlar tus gastos personales. Diseñada para todos, sin conocimientos financieros necesarios.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces</h4>
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Acerca de</a>
+        <a href="producto.html">Planes</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="#">Términos de Uso</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contacto</h4>
+        <p>📧 info@gastoclaro.com</p>
+        <p>📍 Ciudad de México</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 GastoClaro. Todos los derechos reservados.</p>
+    </div>
+  </div>
 </footer>
 
 </body>

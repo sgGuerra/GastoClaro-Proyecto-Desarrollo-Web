@@ -2,54 +2,194 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GastoClaro | Contáctanos</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/contacto.css">
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <h1>GastoClaro</h1>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="about.html">Acerca de</a>
-    <a href="producto.html">Producto</a>
-    <a href="contacto.html">Contáctanos</a>
-  </nav>
+  <div class="header-container">
+    <h1><a href="index.html">💰 GastoClaro</a></h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="about.html">Acerca de</a>
+      <a href="producto.html">Planes</a>
+      <a href="contacto.html" class="active">Contáctanos</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <section>
-    <h2>Formulario de contacto</h2>
-
-    <form>
-      <label>Nombre
-        <input type="text" required>
-      </label>
-
-      <label>Email
-        <input type="email" required>
-      </label>
-
-      <label>Mensaje
-        <textarea required></textarea>
-      </label>
-
-      <button type="submit">Enviar</button>
-    </form>
+  <!-- Contact Hero Section -->
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <h1>Contáctanos</h1>
+      <p>Estamos aquí para ayudarte. Escríbenos y responderemos a la brevedad.</p>
+    </div>
   </section>
 
-  <section>
-    <h2>Ubicación</h2>
-    <p>Ciudad de ejemplo</p>
-    <iframe 
-      src="https://maps.google.com/maps?q=New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed">
-    </iframe>
+  <!-- Contact Info Section -->
+  <section class="contact-info-section">
+    <div class="contact-info-grid">
+      <div class="contact-info-card">
+        <div class="contact-info-icon">📧</div>
+        <h3>Email</h3>
+        <p>Envíanos un email a:</p>
+        <a href="mailto:info@gastoclaro.com">info@gastoclaro.com</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-info-icon">📞</div>
+        <h3>Teléfono</h3>
+        <p>Llámanos en horario laboral:</p>
+        <a href="tel:+525512345678">+52 55 1234 5678</a>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-info-icon">📍</div>
+        <h3>Ubicación</h3>
+        <p>Ciudad de México, México</p>
+        <p>Av. Principal 123</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-form-section">
+    <div class="contact-form-grid">
+      <div class="contact-form-container">
+        <h2>Envíanos un Mensaje</h2>
+        <p>¿Tienes alguna pregunta sobre GastoClaro? ¿Necesitas ayuda con tu cuenta? ¿Sugerencias? Estamos aquí para escucharte.</p>
+        
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo <span>*</span></label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span>*</span></label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono">
+            </div>
+            <div class="form-group">
+              <label for="asunto">Asunto</label>
+              <select id="asunto" name="asunto">
+                <option value="">Selecciona un asunto</option>
+                <option value="soporte">Soporte técnico</option>
+                <option value="ventas">Consultas sobre planes</option>
+                <option value="sugerencias">Sugerencias</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="mensaje">Mensaje <span>*</span></label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="5" required></textarea>
+          </div>
+          
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="newsletter" name="newsletter">
+            <label for="newsletter">Quiero recibir noticias y actualizaciones de GastoClaro</label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+        </form>
+      </div>
+      
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539482949928!2d-99.1631166850826!3d19.4326076868843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8d345678901%3A0x1234567890abcdef!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1630000000000!5m2!1ses!2smx"
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Info Section -->
+  <section class="office-section">
+    <div class="office-grid">
+      <div class="office-content">
+        <h2>Nuestra Oficina</h2>
+        <p>Estamos ubicados en el corazón de la Ciudad de México. Nuestro equipo trabaja duro para mejorar GastoClaro cada día.</p>
+        <ul class="office-features">
+          <li>Atención al cliente en español</li>
+          <li>Soporte técnico especializado</li>
+          <li>Horario: Lunes a Viernes 9am - 6pm</li>
+          <li>Respuesta en menos de 24 horas</li>
+        </ul>
+      </div>
+      <div class="office-image">🏢</div>
+    </div>
+  </section>
+
+  <!-- FAQ Contact Section -->
+  <section class="faq-contact-section">
+    <div class="section-title">
+      <h2>Preguntas Frecuentes</h2>
+      <p>¿Tienes dudas? Quizás ya tengamos la respuesta</p>
+    </div>
+    <div class="faq-contact-grid">
+      <div class="faq-contact-item">
+        <h4>¿Cómo puedo empezar a usar GastoClaro?</h4>
+        <p>Simplemente visita nuestro sitio web y comienza a registrar tus gastos. No necesitas registrarte ni descargar nada.</p>
+      </div>
+      <div class="faq-contact-item">
+        <h4>¿Mis datos están seguros?</h4>
+        <p>Sí. Todos tus datos se almacenan localmente en tu navegador. Nunca compartimos tu información con terceros.</p>
+      </div>
+      <div class="faq-contact-item">
+        <h4>¿GastoClaro es realmente gratis?</h4>
+        <p>El plan básico es completamente gratuito y siempre lo será. Los planes Plus y Pro son opcionales.</p>
+      </div>
+      <div class="faq-contact-item">
+        <h4>¿Puedo exportar mis datos?</h4>
+        <p>En los planes Plus y Pro puedes exportar tus datos a PDF o Excel. El plan gratuito guarda todo en localStorage.</p>
+      </div>
+    </div>
   </section>
 </main>
 
+<!-- Footer -->
 <footer>
-  <p>© 2026 GastoClaro</p>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h4>GastoClaro</h4>
+        <p>La aplicación más simple para controlar tus gastos personales. Diseñada para todos, sin conocimientos financieros necesarios.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces</h4>
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Acerca de</a>
+        <a href="producto.html">Planes</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="#">Términos de Uso</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contacto</h4>
+        <p>📧 info@gastoclaro.com</p>
+        <p>📍 Ciudad de México</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 GastoClaro. Todos los derechos reservados.</p>
+    </div>
+  </div>
 </footer>
 
 </body>
