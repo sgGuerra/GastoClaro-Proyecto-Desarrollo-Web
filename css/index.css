@@ -1,7 +1,31 @@
 main {
-  padding: 2rem;
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-left: 5px solid #667eea;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+  color: #667eea;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+section ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+section li {
+  margin-bottom: 0.5rem;
+  color: #555;
 }
