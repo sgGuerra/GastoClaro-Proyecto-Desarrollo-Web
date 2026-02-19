@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node 
+node_modules
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentación
+README.md
+*.md
+
+# Archivos de sistema
+.env.local
+.env.*.local
+Thumbs.db
+
+# Archivos de construcción
+.docker
+.dockerignore
+Dockerfile
+docker-compose*.yml
+
+# Archivos temporales
+*.tmp
+*.temp
