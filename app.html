@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GastoClaro - Dashboard</title>
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Login/Register Page -->
+  <div id="authPage" class="auth-container">
+    <div class="auth-card">
+      <h1>GastoClaro</h1>
+      <p class="subtitle">Controla tus finanzas personales</p>
+      
+      <div class="auth-tabs">
+        <button class="tab-btn active" data-tab="login">Iniciar Sesión</button>
+        <button class="tab-btn" data-tab="register">Registrarse</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form active">
+        <div class="form-group">
+          <label for="loginUsername">Usuario o Email</label>
+          <input type="text" id="loginUsername" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <div class="demo-info">
+          <p><strong>Datos de prueba:</strong></p>
+          <p>Usuario: <code>demo</code></p>
+          <p>Contraseña: <code>demo123</code></p>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label for="registerUsername">Usuario</label>
+          <input type="text" id="registerUsername" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Contraseña</label>
+          <input type="password" id="registerPassword" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </form>
+
+      <div id="authMessage" class="message"></div>
+    </div>
+  </div>
+
+  <!-- Dashboard Page -->
+  <div id="dashboardPage" class="dashboard-container" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>GastoClaro</h2>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-link active" data-target="overview">📊 Resumen</a>
+        <a href="#" class="nav-link" data-target="expenses">💰 Gastos</a>
+        <a href="#" class="nav-link" data-target="debts">📋 Deudas</a>
+        <a href="#" class="nav-link" data-target="goals">🎯 Metas</a>
+      </nav>
+      <div class="user-info">
+        <p id="userName">Usuario</p>
+        <p id="userEmail">email@example.com</p>
+      </div>
+      <button id="logoutBtn" class="btn btn-logout">Cerrar Sesión</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <h1 id="pageTitle">Resumen Financiero</h1>
+        <button id="refreshBtn" class="btn btn-icon">🔄</button>
+      </header>
+
+      <!-- Overview Tab -->
+      <section id="overview" class="tab-content active">
+        <!-- Metrics Cards -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <h3>Ingresos Totales</h3>
+            <p id="totalIncome" class="metric-value">$0.00</p>
+          </div>
+          <div class="metric-card">
+            <h3>Gastos Totales</h3>
+            <p id="totalExpenses" class="metric-value">$0.00</p>
+          </div>
+          <div class="metric-card">
+            <h3>Balance</h3>
+            <p id="balance" class="metric-value">$0.00</p>
+          </div>
+          <div class="metric-card">
+            <h3>Total Deudas</h3>
+            <p id="totalDebts" class="metric-value">$0.00</p>
+          </div>
+          <div class="metric-card">
+            <h3>Progreso Metas</h3>
+            <p id="goalsProgress" class="metric-value">0%</p>
+          </div>
+          <div class="metric-card health-card">
+            <h3>Salud Financiera</h3>
+            <div class="health-gauge">
+              <div id="healthGauge" class="gauge"></div>
+              <span id="healthScore" class="score">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+          <div class="chart-card">
+            <h3>Tendencia Mensual</h3>
+            <canvas id="monthlyChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Gastos por Categoría</h3>
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="recommendations-section">
+          <h3>Recomendaciones</h3>
+          <div id="recommendationsList" class="recommendations-list"></div>
+        </div>
+      </section>
+
+      <!-- Expenses Tab -->
+      <section id="expenses" class="tab-content">
+        <div class="content-header">
+          <h2>Gestión de Gastos e Ingresos</h2>
+        </div>
+
+        <div class="form-card">
+          <h3>Agregar Nuevo</h3>
+          <form id="expenseForm" class="data-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Descripción</label>
+                <input type="text" name="description" required>
+              </div>
+              <div class="form-group">
+                <label>Monto</label>
+                <input type="number" step="0.01" name="amount" required>
+              </div>
+              <div class="form-group">
+                <label>Categoría</label>
+                <select name="category" required>
+                  <option value="Alimentación">Alimentación</option>
+                  <option value="Transporte">Transporte</option>
+                  <option value="Vivienda">Vivienda</option>
+                  <option value="Servicios">Servicios</option>
+                  <option value="Entretenimiento">Entretenimiento</option>
+                  <option value="Salud">Salud</option>
+                  <option value="Educación">Educación</option>
+                  <option value="Ropa">Ropa</option>
+                  <option value="Salario">Salario</option>
+                  <option value="Extra">Extra</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Tipo</label>
+                <select name="type" required>
+                  <option value="expense">Gasto</option>
+                  <option value="income">Ingreso</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+
+        <div class="list-card">
+          <h3>Últimos Movimientos</h3>
+          <div id="expensesList" class="items-list"></div>
+        </div>
+      </section>
+
+      <!-- Debts Tab -->
+      <section id="debts" class="tab-content">
+        <div class="content-header">
+          <h2>Gestión de Deudas</h2>
+        </div>
+
+        <div class="form-card">
+          <h3>Agregar Nueva Deuda</h3>
+          <form id="debtForm" class="data-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Acreedor</label>
+                <input type="text" name="creditor" required>
+              </div>
+              <div class="form-group">
+                <label>Monto Total</label>
+                <input type="number" step="0.01" name="totalAmount" required>
+              </div>
+              <div class="form-group">
+                <label>Monto Pendiente</label>
+                <input type="number" step="0.01" name="amount" required>
+              </div>
+              <div class="form-group">
+                <label>Tasa de Interés (%)</label>
+                <input type="number" step="0.01" name="interestRate" value="0">
+              </div>
+              <div class="form-group">
+                <label>Fecha Vencimiento</label>
+                <input type="date" name="dueDate" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+
+        <div class="list-card">
+          <h3>Mis Deudas</h3>
+          <div id="debtsList" class="items-list"></div>
+        </div>
+      </section>
+
+      <!-- Goals Tab -->
+      <section id="goals" class="tab-content">
+        <div class="content-header">
+          <h2>Gestión de Metas</h2>
+        </div>
+
+        <div class="form-card">
+          <h3>Crear Nueva Meta</h3>
+          <form id="goalForm" class="data-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="name" required>
+              </div>
+              <div class="form-group">
+                <label>Monto Objetivo</label>
+                <input type="number" step="0.01" name="targetAmount" required>
+              </div>
+              <div class="form-group">
+                <label>Monto Actual</label>
+                <input type="number" step="0.01" name="currentAmount" value="0">
+              </div>
+              <div class="form-group">
+                <label>Fecha Límite</label>
+                <input type="date" name="deadline">
+              </div>
+              <div class="form-group">
+                <label>Prioridad</label>
+                <select name="priority">
+                  <option value="low">Baja</option>
+                  <option value="medium" selected>Media</option>
+                  <option value="high">Alta</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear</button>
+          </form>
+        </div>
+
+        <div class="list-card">
+          <h3>Mis Metas</h3>
+          <div id="goalsList" class="items-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <h3>Registrar Pago</h3>
+      <form id="paymentForm">
+        <input type="hidden" id="paymentDebtId">
+        <div class="form-group">
+          <label>Monto del Pago</label>
+          <input type="number" step="0.01" name="paymentAmount" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('paymentModal').classList.remove('active')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Pagar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Contribution Modal -->
+  <div id="contributionModal" class="modal">
+    <div class="modal-content">
+      <h3>Realizar Aporte</h3>
+      <form id="contributionForm">
+        <input type="hidden" id="contributionGoalId">
+        <div class="form-group">
+          <label>Monto del Aporte</label>
+          <input type="number" step="0.01" name="contributionAmount" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('contributionModal').classList.remove('active')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Aportar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data/models.js"></script>
+  <script src="js/services/auth.js"></script>
+  <script src="js/services/expenses.js"></script>
+  <script src="js/services/debts.js"></script>
+  <script src="js/services/goals.js"></script>
+  <script src="js/services/metrics.js"></script>
+  <script src="js/ui/dashboard.js"></script>
+  <script>
+    // Auth page logic
+    const auth = new AuthService();
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const tab = e.target.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+        e.target.classList.add('active');
+        document.getElementById(tab + 'Form').classList.add('active');
+      });
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      try {
+        const result = auth.login(username, password);
+        if (result.success) {
+          showDashboard();
+        }
+      } catch (error) {
+        showMessage(error.message, 'error');
+      }
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('registerUsername').value;
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      
+      try {
+        const result = auth.register(username, email, password);
+        if (result.success) {
+          showMessage('Registro exitoso. Ahora inicia sesión.', 'success');
+          document.querySelector('[data-tab="login"]').click();
+        }
+      } catch (error) {
+        showMessage(error.message, 'error');
+      }
+    });
+
+    function showDashboard() {
+      document.getElementById('authPage').style.display = 'none';
+      document.getElementById('dashboardPage').style.display = 'flex';
+    }
+
+    function showMessage(message, type) {
+      const msgEl = document.getElementById('authMessage');
+      msgEl.textContent = message;
+      msgEl.className = `message ${type}`;
+      setTimeout(() => msgEl.textContent = '', 5000);
+    }
+
+    // Check if already logged in
+    if (auth.isAuthenticated()) {
+      showDashboard();
+    }
+  </script>
+</body>
+</html>

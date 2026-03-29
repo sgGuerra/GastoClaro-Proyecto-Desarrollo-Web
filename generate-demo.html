@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar Datos Demo - GastoClaro</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 { color: #3b82f6; text-align: center; margin-bottom: 10px; }
+    .subtitle { text-align: center; color: #6b7280; margin-bottom: 30px; }
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #2563eb; }
+    .btn-secondary { background: #6b7280; }
+    .btn-secondary:hover { background: #4b5563; }
+    .message {
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
+    .message.success { background: #dcfce7; color: #166534; display: block; }
+    .message.error { background: #fee2e2; color: #991b1b; display: block; }
+    .info-box {
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+    .info-box h3 { margin-bottom: 10px; color: #1f2937; }
+    .info-box p { color: #6b7280; font-size: 14px; margin: 5px 0; }
+    .info-box code {
+      background: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎲 Generar Datos Demo</h1>
+    <p class="subtitle">GastoClaro - Datos de Prueba</p>
+
+    <div class="info-box">
+      <h3>Datos de Acceso</h3>
+      <p>Usuario: <code>demo</code></p>
+      <p>Contraseña: <code>demo123</code></p>
+    </div>
+
+    <div class="info-box">
+      <h3>Se Generará:</h3>
+      <p>✓ 1 usuario demo</p>
+      <p>✓ 25-30 gastos e ingresos</p>
+      <p>✓ 3 deudas con diferentes tasas</p>
+      <p>✓ 4 metas financieras</p>
+    </div>
+
+    <button class="btn" onclick="generateDemoData()">🔄 Generar Nuevos Datos</button>
+    <button class="btn btn-secondary" onclick="window.location.href='app.html'">Ir a la Aplicación</button>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script src="js/data/models.js"></script>
+  <script src="js/data/demo-data.js"></script>
+  <script>
+    function generateDemoData() {
+      try {
+        // Limpiar datos existentes
+        localStorage.removeItem('users');
+        localStorage.removeItem('expenses');
+        localStorage.removeItem('debts');
+        localStorage.removeItem('goals');
+        localStorage.removeItem('currentUser');
+
+        // Generar nuevos datos
+        const data = generateDemoData();
+
+        // Guardar en localStorage
+        localStorage.setItem('users', JSON.stringify(data.users));
+        localStorage.setItem('expenses', JSON.stringify(data.expenses));
+        localStorage.setItem('debts', JSON.stringify(data.debts));
+        localStorage.setItem('goals', JSON.stringify(data.goals));
+
+        showMessage('¡Datos generados exitosamente! Ahora puedes iniciar sesión con las credenciales demo.', 'success');
+      } catch (error) {
+        showMessage('Error: ' + error.message, 'error');
+      }
+    }
+
+    function showMessage(text, type) {
+      const msgEl = document.getElementById('message');
+      msgEl.textContent = text;
+      msgEl.className = `message ${type}`;
+      
+      setTimeout(() => {
+        msgEl.classList.remove('show');
+      }, 5000);
+    }
+
+    // Generar datos automáticamente al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('users')) {
+        generateDemoData();
+      }
+    });
+  </script>
+</body>
+</html>
