@@ -1,4 +1,3 @@
-```
 # Dependencies
 node_modules/
 
@@ -69,4 +68,26 @@ Thumbs.db
 .nyc_output/
 coverage/
 .junit/
-```
+
+# Next.js
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+logs/
+*.log
+
+# Cache
+.eslintcache
+.stylelintcache
+.prettiercache
+.turbo/
+node_modules/.cache/
+.npm/
+.next/cache/

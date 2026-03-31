@@ -1,0 +1,33 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+.next
+.git
+.legacy
+
+# Entorno
+.env
+.env.local
+.env.*
+
+# Vercel
+.vercel
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+logs/
+*.log
+
+# Cache
+.eslintcache
+.stylelintcache
+.prettiercache
+.turbo/
+node_modules/.cache/
+.npm/
+.next/cache/
