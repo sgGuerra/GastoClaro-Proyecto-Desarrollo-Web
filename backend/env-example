@@ -1,0 +1,7 @@
+# Puerto del servidor Express
+PORT=4000
+
+# URL del frontend (para CORS)
+FRONTEND_URL=http://localhost:3000
+
+# Agrega aquí tus claves de APIs externas
